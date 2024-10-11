@@ -137,6 +137,51 @@ app.post('/entry', (req, res) => {
 
 /**
  * @swagger
+ * /entries:
+ *   get:
+ *     summary: List all entries
+ *     responses:
+ *       200:
+ *         description: All entries
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 entries:
+ *                   type: array
+ *                   items:
+ *                     type: integer
+ */
+app.get('/entries', (req, res) => {
+    res.json({ entries });
+});
+
+/**
+ * @swagger
+ * /entries:
+ *   delete:
+ *     summary: Delete all entries
+ *     responses:
+ *       200:
+ *         description: All entries have been deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 entries:
+ *                   type: array
+ *                   items:
+ *                     type: integer
+ */
+app.delete('/entries', (req, res) => {
+    entries = [];
+    res.json({ entries });
+});
+
+/**
+ * @swagger
  * /uniqueRandom:
  *   get:
  *     summary: Get a unique random number between 1 and max
@@ -180,51 +225,6 @@ app.get('/uniqueRandom', (req, res) => {
 
     entries.push(randomNumber);
     res.json({ randomNumber });
-});
-
-/**
- * @swagger
- * /entries:
- *   get:
- *     summary: List all entries
- *     responses:
- *       200:
- *         description: All entries
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 entries:
- *                   type: array
- *                   items:
- *                     type: integer
- */
-app.get('/entries', (req, res) => {
-    res.json({ entries });
-});
-
-/**
- * @swagger
- * /entries:
- *   delete:
- *     summary: Delete all entries
- *     responses:
- *       200:
- *         description: All entries have been deleted
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 entries:
- *                   type: array
- *                   items:
- *                     type: integer
- */
-app.delete('/entries', (req, res) => {
-    entries = [];
-    res.json({ entries });
 });
 
 // Swagger setup
